@@ -1,16 +1,14 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-import Appsignal from "@appsignal/javascript";
+import appsignal from "./appsignal";
 import { errorHandler } from "@appsignal/vue";
-
-const appsignal = new Appsignal({
-  key: "YOUR-FONT-END-KEY",
-});
+import router from './router'
 
 Vue.config.productionTip = false
 Vue.config.errorHandler = errorHandler(appsignal, Vue);
 
 new Vue({
-  render: (h) => h(App),
+  router,
+  render: (h) => h(App)
 }).$mount("#app");
